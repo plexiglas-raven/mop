@@ -36,6 +36,9 @@ func NewHolyPaladin(character *core.Character, options *proto.Player) *HolyPalad
 
 type HolyPaladin struct {
 	*paladin.Paladin
+
+	HolyShock *core.Spell
+	Denounce  *core.Spell
 }
 
 func (holy *HolyPaladin) GetPaladin() *paladin.Paladin {
@@ -51,6 +54,8 @@ func (holy *HolyPaladin) Initialize() {
 	holy.Paladin.Initialize()
 
 	holy.registerHotfixPassive()
+	holy.registerHolyShock()
+	holy.registerDenounce()
 }
 
 func (holy *HolyPaladin) Reset(sim *core.Simulation) {

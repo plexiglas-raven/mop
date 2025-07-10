@@ -65,13 +65,13 @@ const SPEC_CONFIG = registerSpecConfig(Spec.SpecHolyPaladin, {
 		epWeights: [Presets.P1_EP_PRESET],
 		// Preset talents that the user can quickly select.
 		talents: [Presets.StandardTalents],
-		rotations: [],
+		rotations: [Presets.APL_PRESET],
 		// Preset gear configurations that the user can quickly select.
 		gear: [Presets.P1_GEAR_PRESET],
 	},
 
 	autoRotation: (_player: Player<Spec.SpecHolyPaladin>): APLRotation => {
-		return APLRotation.create();
+		return Presets.APL_PRESET.rotation.rotation!;
 	},
 
 	raidSimPresets: [

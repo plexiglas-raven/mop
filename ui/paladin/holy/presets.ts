@@ -8,6 +8,7 @@ import {
 import { SavedTalents } from '../../core/proto/ui.js';
 import { Stats } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
+import DefaultApl from './apls/default.apl.json';
 import P1Gear from './gear_sets/p1.gear.json';
 
 // Preset options for this spec.
@@ -15,6 +16,7 @@ import P1Gear from './gear_sets/p1.gear.json';
 // keep them in a separate file.
 
 export const P1_GEAR_PRESET = PresetUtils.makePresetGear('P1 Preset', P1Gear);
+export const APL_PRESET = PresetUtils.makePresetAPLRotation('Default', DefaultApl);
 
 // Preset options for EP weights
 export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
@@ -35,7 +37,7 @@ export const P1_EP_PRESET = PresetUtils.makePresetEpWeights(
 export const StandardTalents = {
 	name: 'Standard',
 	data: SavedTalents.create({
-		talentsString: '',
+		talentsString: '311232',
 		glyphs: Glyphs.create({
 			major1: MajorGlyph.GlyphOfDivinePlea,
 			major2: MajorGlyph.GlyphOfDivinity,

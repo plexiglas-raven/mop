@@ -52,7 +52,7 @@ export const simLaunchStatuses: Record<Spec, SimStatus> = {
 	},
 	[Spec.SpecGuardianDruid]: {
 		phase: Phase.Phase1,
-		status: LaunchStatus.Alpha,
+		status: LaunchStatus.Unlaunched,
 	},
 	[Spec.SpecRestorationDruid]: {
 		phase: Phase.Phase1,
@@ -100,7 +100,7 @@ export const simLaunchStatuses: Record<Spec, SimStatus> = {
 	// Paladin
 	[Spec.SpecHolyPaladin]: {
 		phase: Phase.Phase1,
-		status: LaunchStatus.Unlaunched,
+		status: LaunchStatus.Alpha,
 	},
 	[Spec.SpecProtectionPaladin]: {
 		phase: Phase.Phase1,

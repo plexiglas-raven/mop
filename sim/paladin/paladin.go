@@ -95,6 +95,7 @@ func (paladin *Paladin) registerSpells() {
 	paladin.registerAvengingWrath()
 	paladin.registerCrusaderStrike()
 	paladin.registerDevotionAura()
+	paladin.registerDivineFavor()
 	paladin.registerDivineProtection()
 	paladin.registerFlashOfLight()
 	paladin.registerForbearance()
