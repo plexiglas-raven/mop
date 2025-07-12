@@ -400,7 +400,7 @@ func (ai *GarajalAI) registerSpiritualGrasp() {
 	}
 
 	playerTarget.RegisterResetEffect(func(sim *core.Simulation) {
-		pa := sim.GetConsumedPendingActionFromPool()
+		pa := &core.PendingAction{}
 		pa.NextActionAt = ai.rollNextSpiritualGraspTime(sim)
 
 		pa.OnAction = func(sim *core.Simulation) {
