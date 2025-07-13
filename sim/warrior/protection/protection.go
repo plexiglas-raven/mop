@@ -100,20 +100,13 @@ func (war *ProtectionWarrior) registerMastery() {
 	})
 
 	war.Blockhandler = func(sim *core.Simulation, spell *core.Spell, result *core.SpellResult) {
-		if !spell.SpellSchool.Matches(core.SpellSchoolPhysical) {
+		procChance := war.GetCriticalBlockChance()
+		if dummyCriticalBlockSpell.CD.IsReady(sim) && sim.Proc(procChance, "Critical Block Roll") {
+			result.Damage = result.Damage * (1 - war.BlockDamageReduction()*2)
+			dummyCriticalBlockSpell.Cast(sim, spell.Unit)
 			return
 		}
-
-		if result.Outcome.Matches(core.OutcomeBlock) && !result.Outcome.Matches(core.OutcomeMiss) && !result.Outcome.Matches(core.OutcomeParry) && !result.Outcome.Matches(core.OutcomeDodge) {
-			procChance := war.GetCriticalBlockChance()
-			if dummyCriticalBlockSpell.CD.IsReady(sim) && sim.Proc(procChance, "Critical Block Roll") {
-				result.Damage = result.Damage * (1 - war.BlockDamageReduction()*2)
-				dummyCriticalBlockSpell.Cast(sim, spell.Unit)
-				return
-			}
-
-			result.Damage = result.Damage * (1 - war.BlockDamageReduction())
-		}
+		result.Damage = result.Damage * (1 - war.BlockDamageReduction())
 	}
 
 	war.CriticalBlockChance[0] = war.CalculateMasteryCriticalBlockChance()
