@@ -14,7 +14,7 @@ type DelayedActionOptions struct {
 	CleanUp  func(*Simulation)
 }
 
-func NewDelayedAction(sim *Simulation, options DelayedActionOptions) *PendingAction {
+func NewDelayedAction(options DelayedActionOptions) *PendingAction {
 	if options.OnAction == nil {
 		panic("NewDelayedAction: OnAction must not be nil")
 	}
@@ -29,7 +29,7 @@ func NewDelayedAction(sim *Simulation, options DelayedActionOptions) *PendingAct
 
 // Convenience for immediately creating and starting a delayed action.
 func StartDelayedAction(sim *Simulation, options DelayedActionOptions) *PendingAction {
-	pa := NewDelayedAction(sim, options)
+	pa := NewDelayedAction(options)
 	sim.AddPendingAction(pa)
 	return pa
 }

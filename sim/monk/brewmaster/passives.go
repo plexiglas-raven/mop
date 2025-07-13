@@ -218,7 +218,8 @@ func (bm *BrewmasterMonk) registerGiftOfTheOx() {
 			if sim.Proc(procChance, "Gift of The Ox") {
 				giftOfTheOxStackingAura.Activate(sim)
 				giftOfTheOxStackingAura.AddStack(sim)
-				pendingSpheres = append(pendingSpheres, core.StartDelayedAction(sim, core.DelayedActionOptions{
+
+				pa := core.NewDelayedAction(core.DelayedActionOptions{
 					DoAt: sim.CurrentTime + sphereDuration,
 					OnAction: func(sim *core.Simulation) {
 						giftOfTheOxStackingAura.RemoveStack(sim)
@@ -227,7 +228,10 @@ func (bm *BrewmasterMonk) registerGiftOfTheOx() {
 					CleanUp: func(sim *core.Simulation) {
 						pendingSpheres = pendingSpheres[:1]
 					},
-				}))
+				})
+
+				sim.AddPendingAction(pa)
+				pendingSpheres = append(pendingSpheres, pa)
 			}
 		},
 	})

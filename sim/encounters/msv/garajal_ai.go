@@ -293,18 +293,19 @@ func (ai *GarajalAI) registerTankSwapAuras() {
 			finalActivation := activationPeriod * numActivations
 
 			if finalActivation+voodooDollsDuration <= ai.enableFrenzyAt {
-				core.StartDelayedAction(sim, core.DelayedActionOptions{
-					DoAt:     ai.enableFrenzyAt - 1,
-					Priority: core.ActionPriorityDOT,
+				pa := sim.GetConsumedPendingActionFromPool()
+				pa.NextActionAt = ai.enableFrenzyAt - 1
+				pa.Priority = core.ActionPriorityDOT
 
-					OnAction: func(sim *core.Simulation) {
-						if ai.BanishmentAura.IsActive() {
-							ai.BanishmentAura.Deactivate(sim)
-						}
+				pa.OnAction = func(sim *core.Simulation) {
+					if ai.BanishmentAura.IsActive() {
+						ai.BanishmentAura.Deactivate(sim)
+					}
 
-						aura.Activate(sim)
-					},
-				})
+					aura.Activate(sim)
+				}
+
+				sim.AddPendingAction(pa)
 			}
 		},
 
@@ -443,14 +444,15 @@ func (ai *GarajalAI) registerFrenzy() {
 		},
 
 		OnReset: func(aura *core.Aura, sim *core.Simulation) {
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt:     ai.enableFrenzyAt,
-				Priority: core.ActionPriorityDOT,
+			pa := sim.GetConsumedPendingActionFromPool()
+			pa.NextActionAt = ai.enableFrenzyAt
+			pa.Priority = core.ActionPriorityDOT
 
-				OnAction: func(sim *core.Simulation) {
-					aura.Activate(sim)
-				},
-			})
+			pa.OnAction = func(sim *core.Simulation) {
+				aura.Activate(sim)
+			}
+
+			sim.AddPendingAction(pa)
 		},
 	})
 }
