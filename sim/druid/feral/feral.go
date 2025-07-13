@@ -133,7 +133,7 @@ func (cat *FeralDruid) Initialize() {
 
 func (cat *FeralDruid) ApplyTalents() {
 	cat.Druid.ApplyTalents()
-	cat.MultiplyStat(stats.AttackPower, 1.25) // Aggression passive
+	cat.ApplyArmorSpecializationEffect(stats.Agility, proto.ArmorType_ArmorTypeLeather, 86097)
 }
 
 func (cat *FeralDruid) Reset(sim *core.Simulation) {
