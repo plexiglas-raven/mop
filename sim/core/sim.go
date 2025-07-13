@@ -658,6 +658,11 @@ func (sim *Simulation) AddPendingAction(pa *PendingAction) {
 	sim.pendingActions = append(sim.pendingActions, pa)
 }
 
+// Use this for any "fire and forget" delayed actions where your code does not
+// require persistent access to the returned *PendingAction pointer. This helper
+// avoids unnecessary re-allocations of the PendingAction struct for improved
+// code performance, but offers no guarantees on the long-term state of the
+// underlying struct, which will be re-used once consumed.
 func (sim *Simulation) GetConsumedPendingActionFromPool() *PendingAction {
 	pa := sim.pendingActionPool.Get().(*PendingAction)
 	pa.NextActionAt = 0
