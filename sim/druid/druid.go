@@ -106,13 +106,16 @@ const (
 	DruidSpellMaul
 	DruidSpellMoonfire
 	DruidSpellMoonfireDoT
+	DruidSpellRake
 	DruidSpellRavage
+	DruidSpellRip
 	DruidSpellShred
 	DruidSpellStarfall
 	DruidSpellStarfire
 	DruidSpellStarsurge
 	DruidSpellSunfire
 	DruidSpellSunfireDoT
+	DruidSpellThrashCat
 	DruidSpellWildMushroom
 	DruidSpellWildMushroomDetonate
 	DruidSpellWrath

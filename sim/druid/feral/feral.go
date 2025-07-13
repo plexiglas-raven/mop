@@ -134,6 +134,25 @@ func (cat *FeralDruid) Initialize() {
 func (cat *FeralDruid) ApplyTalents() {
 	cat.Druid.ApplyTalents()
 	cat.ApplyArmorSpecializationEffect(stats.Agility, proto.ArmorType_ArmorTypeLeather, 86097)
+	cat.applyMastery()
+}
+
+func (cat *FeralDruid) applyMastery() {
+	const baseMasteryPoints = 8.0
+	const masteryModPerPoint = 0.0313 // TODO: We expect 0.03125, possibly bugged?
+	const baseMasteryMod = baseMasteryPoints * masteryModPerPoint
+
+	razorClaws := cat.AddDynamicMod(core.SpellModConfig{
+		ClassMask:  druid.DruidSpellThrashCat | druid.DruidSpellRake | druid.DruidSpellRip,
+		Kind:       core.SpellMod_DamageDone_Pct,
+		FloatValue: baseMasteryMod + masteryModPerPoint * cat.GetMasteryPoints(),
+	})
+
+	cat.AddOnMasteryStatChanged(func(_ *core.Simulation, _ float64, newMasteryRating float64) {
+		razorClaws.UpdateFloatValue(baseMasteryMod + masteryModPerPoint * core.MasteryRatingToMasteryPoints(newMasteryRating))
+	})
+
+	razorClaws.Activate()
 }
 
 func (cat *FeralDruid) Reset(sim *core.Simulation) {
