@@ -525,6 +525,8 @@ func (sim *Simulation) Step() bool {
 	}
 
 	sim.pendingActions = sim.pendingActions[:last]
+	pa.consumed = true
+
 	if pa.cancelled {
 		return false
 	}
@@ -532,8 +534,6 @@ func (sim *Simulation) Step() bool {
 	if pa.NextActionAt > sim.endOfCombatDuration || sim.Encounter.DamageTaken > sim.endOfCombatDamage {
 		return true
 	}
-
-	pa.consumed = true
 
 	if pa.NextActionAt > sim.CurrentTime {
 		sim.advance(pa.NextActionAt)
