@@ -58,7 +58,7 @@ export const StandardTalents = {
 		talentsString: '233332',
 		glyphs: Glyphs.create({
 			major1: WarriorMajorGlyph.GlyphOfIncite,
-			major2: WarriorMajorGlyph.GlyphOfDeathFromAbove,
+			major2: WarriorMajorGlyph.GlyphOfUnendingRage,
 			major3: WarriorMajorGlyph.GlyphOfHoldTheLine,
 		}),
 	}),

@@ -63,7 +63,7 @@ var ItemFilter = core.ItemFilter{
 var DefaultTalents = "233332"
 var DefaultGlyphs = &proto.Glyphs{
 	Major1: int32(proto.WarriorMajorGlyph_GlyphOfIncite),
-	Major2: int32(proto.WarriorMajorGlyph_GlyphOfDeathFromAbove),
+	Major2: int32(proto.WarriorMajorGlyph_GlyphOfUnendingRage),
 	Major3: int32(proto.WarriorMajorGlyph_GlyphOfHoldTheLine),
 }
 
