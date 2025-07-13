@@ -483,6 +483,8 @@ func (sim *Simulation) Cleanup() {
 		if pa.CleanUp != nil {
 			pa.CleanUp(sim)
 		}
+
+		pa.dispose(sim)
 	}
 
 	sim.Raid.doneIteration(sim)
