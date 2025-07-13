@@ -528,10 +528,12 @@ func (sim *Simulation) Step() bool {
 	pa.consumed = true
 
 	if pa.cancelled {
+		pa.dispose(sim)
 		return false
 	}
 
 	if pa.NextActionAt > sim.endOfCombatDuration || sim.Encounter.DamageTaken > sim.endOfCombatDamage {
+		pa.dispose(sim)
 		return true
 	}
 
@@ -540,15 +542,12 @@ func (sim *Simulation) Step() bool {
 	}
 
 	if pa.cancelled {
+		pa.dispose(sim)
 		return false
 	}
 
 	pa.OnAction(sim)
-
-	if pa.canPool {
-		sim.pendingActionPool.Put(pa)
-	}
-
+	pa.dispose(sim)
 	return false
 }
 
