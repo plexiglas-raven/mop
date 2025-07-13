@@ -6,11 +6,13 @@ import (
 	"github.com/wowsims/mop/sim/common" // imported to get item effects included.
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
+	"github.com/wowsims/mop/sim/encounters/msv"
 )
 
 func init() {
 	RegisterBrewmasterMonk()
 	common.RegisterAllEffects()
+	msv.Register()
 }
 
 func TestBrewmaster(t *testing.T) {

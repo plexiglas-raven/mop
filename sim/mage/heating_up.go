@@ -36,13 +36,15 @@ func (mage *Mage) registerHeatingUp() {
 
 func (mage *Mage) HeatingUpSpellHandler(sim *core.Simulation, spell *core.Spell, result *core.SpellResult, callback func()) {
 	if spell.TravelTime() > time.Duration(FireSpellMaxTimeUntilResult) {
-		core.StartDelayedAction(sim, core.DelayedActionOptions{
-			DoAt: sim.CurrentTime + time.Duration(FireSpellMaxTimeUntilResult),
-			OnAction: func(s *core.Simulation) {
-				callback()
-				mage.HandleHeatingUp(sim, spell, result)
-			},
-		})
+		pa := sim.GetConsumedPendingActionFromPool()
+		pa.NextActionAt = sim.CurrentTime + time.Duration(FireSpellMaxTimeUntilResult)
+
+		pa.OnAction = func(sim *core.Simulation) {
+			callback()
+			mage.HandleHeatingUp(sim, spell, result)
+		}
+
+		sim.AddPendingAction(pa)
 	} else {
 		spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 			callback()
@@ -60,11 +62,13 @@ func (mage *Mage) HandleHeatingUp(sim *core.Simulation, spell *core.Spell, resul
 			mage.HeatingUp.Activate(sim)
 		}
 	} else {
-		core.StartDelayedAction(sim, core.DelayedActionOptions{
-			DoAt: sim.CurrentTime + time.Duration(HeatingUpDeactivateBuffer),
-			OnAction: func(s *core.Simulation) {
-				mage.HeatingUp.Deactivate(sim)
-			},
-		})
+		pa := sim.GetConsumedPendingActionFromPool()
+		pa.NextActionAt = sim.CurrentTime + time.Duration(HeatingUpDeactivateBuffer)
+
+		pa.OnAction = func(sim *core.Simulation) {
+			mage.HeatingUp.Deactivate(sim)
+		}
+
+		sim.AddPendingAction(pa)
 	}
 }

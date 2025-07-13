@@ -469,12 +469,14 @@ func (paladin *Paladin) registerHolyAvenger() {
 		}
 
 		if slices.Contains(paladin.HolyAvengerActionIDFilter, triggeredActionID) {
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt: sim.CurrentTime + core.SpellBatchWindow,
-				OnAction: func(sim *core.Simulation) {
-					paladin.HolyPower.Gain(sim, 2, actionID)
-				},
-			})
+			pa := sim.GetConsumedPendingActionFromPool()
+			pa.NextActionAt = sim.CurrentTime + core.SpellBatchWindow
+
+			pa.OnAction = func(sim *core.Simulation) {
+				paladin.HolyPower.Gain(sim, 2, actionID)
+			}
+
+			sim.AddPendingAction(pa)
 		}
 	})
 
@@ -586,12 +588,14 @@ func (paladin *Paladin) divinePurposeFactory(label string, spellID int32, durati
 			}
 
 			if sim.Proc(procChances[hpSpent], label+paladin.Label) {
-				core.StartDelayedAction(sim, core.DelayedActionOptions{
-					DoAt: sim.CurrentTime + core.SpellBatchWindow,
-					OnAction: func(sim *core.Simulation) {
-						aura.Activate(sim)
-					},
-				})
+				pa := sim.GetConsumedPendingActionFromPool()
+				pa.NextActionAt = sim.CurrentTime + core.SpellBatchWindow
+
+				pa.OnAction = func(sim *core.Simulation) {
+					aura.Activate(sim)
+				}
+
+				sim.AddPendingAction(pa)
 			}
 		},
 	})

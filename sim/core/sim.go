@@ -483,6 +483,8 @@ func (sim *Simulation) Cleanup() {
 		if pa.CleanUp != nil {
 			pa.CleanUp(sim)
 		}
+
+		pa.dispose(sim)
 	}
 
 	sim.Raid.doneIteration(sim)
@@ -525,30 +527,29 @@ func (sim *Simulation) Step() bool {
 	}
 
 	sim.pendingActions = sim.pendingActions[:last]
+	pa.consumed = true
+
 	if pa.cancelled {
+		pa.dispose(sim)
 		return false
 	}
 
 	if pa.NextActionAt > sim.endOfCombatDuration || sim.Encounter.DamageTaken > sim.endOfCombatDamage {
+		pa.dispose(sim)
 		return true
 	}
-
-	pa.consumed = true
 
 	if pa.NextActionAt > sim.CurrentTime {
 		sim.advance(pa.NextActionAt)
 	}
 
 	if pa.cancelled {
+		pa.dispose(sim)
 		return false
 	}
 
 	pa.OnAction(sim)
-
-	if pa.canPool {
-		sim.pendingActionPool.Put(pa)
-	}
-
+	pa.dispose(sim)
 	return false
 }
 
@@ -657,6 +658,11 @@ func (sim *Simulation) AddPendingAction(pa *PendingAction) {
 	sim.pendingActions = append(sim.pendingActions, pa)
 }
 
+// Use this for any "fire and forget" delayed actions where your code does not
+// require persistent access to the returned *PendingAction pointer. This helper
+// avoids unnecessary re-allocations of the PendingAction struct for improved
+// code performance, but offers no guarantees on the long-term state of the
+// underlying struct, which will be re-used once consumed.
 func (sim *Simulation) GetConsumedPendingActionFromPool() *PendingAction {
 	pa := sim.pendingActionPool.Get().(*PendingAction)
 	pa.NextActionAt = 0

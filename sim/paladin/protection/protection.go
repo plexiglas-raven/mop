@@ -91,15 +91,18 @@ func (prot *ProtectionPaladin) trackDamageTakenLastGlobal() {
 					prot.Log(sim, "Damage Taken Last Global: %0.2f", prot.DamageTakenLastGlobal)
 				}
 
-				core.StartDelayedAction(sim, core.DelayedActionOptions{
-					DoAt: sim.CurrentTime + core.GCDDefault,
-					OnAction: func(s *core.Simulation) {
-						prot.DamageTakenLastGlobal -= damageTaken
-						if sim.Log != nil {
-							prot.Log(sim, "Damage Taken Last Global: %0.2f", prot.DamageTakenLastGlobal)
-						}
-					},
-				})
+				pa := sim.GetConsumedPendingActionFromPool()
+				pa.NextActionAt = sim.CurrentTime + core.GCDDefault
+
+				pa.OnAction = func(sim *core.Simulation) {
+					prot.DamageTakenLastGlobal -= damageTaken
+
+					if sim.Log != nil {
+						prot.Log(sim, "Damage Taken Last Global: %0.2f", prot.DamageTakenLastGlobal)
+					}
+				}
+
+				sim.AddPendingAction(pa)
 			}
 		},
 	}))
