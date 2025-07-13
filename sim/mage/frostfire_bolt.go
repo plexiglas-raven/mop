@@ -66,18 +66,20 @@ func (mage *Mage) registerFrostfireBoltSpell() {
 
 			for _, result := range results {
 				if spell.TravelTime() > time.Duration(FireSpellMaxTimeUntilResult) {
-					core.StartDelayedAction(sim, core.DelayedActionOptions{
-						DoAt: sim.CurrentTime + time.Duration(FireSpellMaxTimeUntilResult),
-						OnAction: func(s *core.Simulation) {
-							spell.DealDamage(sim, result)
-							if result.Landed() && mageSpecFrost {
-								mage.GainIcicle(sim, target, result.Damage)
-							}
-							if mageSpecFire {
-								mage.HandleHeatingUp(sim, spell, result)
-							}
-						},
-					})
+					pa := sim.GetConsumedPendingActionFromPool()
+					pa.NextActionAt = sim.CurrentTime + time.Duration(FireSpellMaxTimeUntilResult)
+
+					pa.OnAction = func(sim *core.Simulation) {
+						spell.DealDamage(sim, result)
+						if result.Landed() && mageSpecFrost {
+							mage.GainIcicle(sim, target, result.Damage)
+						}
+						if mageSpecFire {
+							mage.HandleHeatingUp(sim, spell, result)
+						}
+					}
+
+					sim.AddPendingAction(pa)
 				} else {
 					spell.WaitTravelTime(sim, func(sim *core.Simulation) {
 						spell.DealDamage(sim, result)
