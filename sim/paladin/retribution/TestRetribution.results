@@ -621,8 +621,8 @@ dps_results: {
 dps_results: {
  key: "TestRetribution-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 152922.99909
-  tps: 144226.34768
+  dps: 152921.40188
+  tps: 144224.75047
  }
 }
 dps_results: {

@@ -131,8 +131,8 @@ dps_results: {
 dps_results: {
  key: "TestArcane-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 141163.93325
-  tps: 138948.02218
+  dps: 141163.19306
+  tps: 138947.28199
  }
 }
 dps_results: {
