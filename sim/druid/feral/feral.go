@@ -70,7 +70,8 @@ type FeralDruid struct {
 	*druid.Druid
 
 	// Aura references
-	ClearcastingAura *core.Aura
+	ClearcastingAura       *core.Aura
+	PredatorySwiftnessAura *core.Aura
 
 	// Rotation FeralDruidRotation
 
@@ -105,6 +106,7 @@ func (cat *FeralDruid) Initialize() {
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()
 	cat.applyOmenOfClarity()
+	cat.applyPredatorySwiftness()
 
 	snapshotHandler := func(aura *core.Aura, sim *core.Simulation) {
 		previousRipSnapshotPower := cat.Rip.NewSnapshotPower

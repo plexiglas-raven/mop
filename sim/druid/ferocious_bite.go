@@ -20,10 +20,11 @@ func (druid *Druid) registerFerociousBiteSpell() {
 	dmgPerComboPoint := resourceCoefficient * druid.ClassSpellScaling
 
 	druid.FerociousBite = druid.RegisterSpell(Cat, core.SpellConfig{
-		ActionID:    core.ActionID{SpellID: 22568},
-		SpellSchool: core.SpellSchoolPhysical,
-		ProcMask:    core.ProcMaskMeleeMHSpecial,
-		Flags:       core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ActionID:       core.ActionID{SpellID: 22568},
+		SpellSchool:    core.SpellSchoolPhysical,
+		ProcMask:       core.ProcMaskMeleeMHSpecial,
+		Flags:          core.SpellFlagMeleeMetrics | core.SpellFlagAPL,
+		ClassSpellMask: DruidSpellFerociousBite,
 
 		EnergyCost: core.EnergyCostOptions{
 			Cost:   25,
