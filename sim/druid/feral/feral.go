@@ -70,8 +70,13 @@ type FeralDruid struct {
 	*druid.Druid
 
 	// Aura references
-	ClearcastingAura       *core.Aura
-	PredatorySwiftnessAura *core.Aura
+	ClearcastingAura        *core.Aura
+	PredatorySwiftnessAura  *core.Aura
+	SavageRoarBuff          *core.Dot
+	SavageRoarDurationTable [6]time.Duration
+
+	// Spell references
+	SavageRoar *druid.DruidSpell
 
 	// Rotation FeralDruidRotation
 
@@ -102,6 +107,7 @@ func (cat *FeralDruid) AddRaidBuffs(raidBuffs *proto.RaidBuffs) {
 func (cat *FeralDruid) Initialize() {
 	cat.Druid.Initialize()
 	cat.RegisterFeralCatSpells()
+	cat.registerSavageRoarSpell()
 	cat.ApplyPrimalFury()
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()

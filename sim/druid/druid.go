@@ -1,8 +1,6 @@
 package druid
 
 import (
-	"time"
-
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
 	"github.com/wowsims/mop/sim/core/stats"
@@ -51,7 +49,6 @@ type Druid struct {
 	Rebirth               *DruidSpell
 	Rejuvenation          *DruidSpell
 	Rip                   *DruidSpell
-	SavageRoar            *DruidSpell
 	Shred                 *DruidSpell
 	SurvivalInstincts     *DruidSpell
 	SwipeBear             *DruidSpell
@@ -79,8 +76,6 @@ type Druid struct {
 	MightOfUrsocAura         *core.Aura
 	ProwlAura                *core.Aura
 	SurvivalInstinctsAura    *core.Aura
-
-	SavageRoarDurationTable [6]time.Duration
 
 	form         DruidForm
 	disabledMCDs []*core.MajorCooldown
@@ -114,6 +109,7 @@ const (
 	DruidSpellStarsurge
 	DruidSpellSunfire
 	DruidSpellSunfireDoT
+	DruidSpellSwipeCat
 	DruidSpellThrashCat
 	DruidSpellWildMushroom
 	DruidSpellWildMushroomDetonate
@@ -255,7 +251,6 @@ func (druid *Druid) RegisterFeralCatSpells() {
 	druid.registerRakeSpell()
 	druid.registerRavageSpell()
 	druid.registerRipSpell()
-	// druid.registerSavageRoarSpell()
 	// druid.registerShredSpell()
 	druid.registerSwipeBearSpell()
 	druid.registerSwipeCatSpell()
