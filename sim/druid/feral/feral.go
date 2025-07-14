@@ -69,6 +69,9 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 type FeralDruid struct {
 	*druid.Druid
 
+	// Aura references
+	ClearcastingAura *core.Aura
+
 	// Rotation FeralDruidRotation
 
 	readyToShift       bool
@@ -101,6 +104,7 @@ func (cat *FeralDruid) Initialize() {
 	cat.ApplyPrimalFury()
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()
+	cat.applyOmenOfClarity()
 
 	snapshotHandler := func(aura *core.Aura, sim *core.Simulation) {
 		previousRipSnapshotPower := cat.Rip.NewSnapshotPower

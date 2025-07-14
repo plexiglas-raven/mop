@@ -72,7 +72,6 @@ type Druid struct {
 	BerserkBearAura          *core.Aura
 	BerserkCatAura           *core.Aura
 	CatFormAura              *core.Aura
-	ClearcastingAura         *core.Aura
 	WeakenedBlowsAuras       core.AuraArray
 	FaerieFireAuras          core.AuraArray
 	FrenziedRegenerationAura *core.Aura
@@ -82,8 +81,6 @@ type Druid struct {
 	SurvivalInstinctsAura    *core.Aura
 
 	SavageRoarDurationTable [6]time.Duration
-
-	ProcOoc func(sim *core.Simulation)
 
 	form         DruidForm
 	disabledMCDs []*core.MajorCooldown
