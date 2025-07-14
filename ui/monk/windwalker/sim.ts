@@ -11,7 +11,7 @@ import { StatCapType } from '../../core/proto/ui';
 import { StatCap, Stats, UnitStat } from '../../core/proto_utils/stats';
 import { defaultRaidBuffMajorDamageCooldowns } from '../../core/proto_utils/utils';
 import { Sim } from '../../core/sim';
-import { TypedEvent } from '../../core/typed_event';
+import * as MonkUtils from '../utils';
 import * as Presets from './presets';
 
 const SPEC_CONFIG = registerSpecConfig(Spec.SpecWindwalkerMonk, {
@@ -179,24 +179,9 @@ export class WindwalkerMonkSimUI extends IndividualSimUI<Spec.SpecWindwalkerMonk
 	constructor(parentElem: HTMLElement, player: Player<Spec.SpecWindwalkerMonk>) {
 		super(parentElem, player, SPEC_CONFIG);
 
-		const setTalentBasedSettings = () => {
-			const talents = player.getTalents();
-			let targetDummies = 0;
-			// Zen sphere can be on 2 targets, so we set the target dummies to 2 if it is talented.
-			if (talents.zenSphere) {
-				targetDummies = 2;
-				// Chi Wave jumps to the nearest target requiring a heal, so we set the target dummies to 9 if it is talented.
-				// This is done to get a better approximation of the healing done by Chi Wave.
-			} else if (talents.chiWave) {
-				targetDummies = 9;
-			}
-
-			player.getRaid()?.setTargetDummies(TypedEvent.nextEventID(), targetDummies);
-		};
-
-		setTalentBasedSettings();
+		MonkUtils.setTalentBasedSettings(player);
 		player.talentsChangeEmitter.on(() => {
-			setTalentBasedSettings();
+			MonkUtils.setTalentBasedSettings(player);
 		});
 
 		player.sim.waitForInit().then(() => {
