@@ -188,7 +188,7 @@ func (war *Warrior) registerBladestorm() {
 		},
 	})
 
-	channelMod := war.AddDynamicMod(core.SpellModConfig{
+	war.AddStaticMod(core.SpellModConfig{
 		ClassMask: SpellMaskBattleShout | SpellMaskCommandingShout | SpellMaskRallyingCry | SpellMaskLastStand | SpellMaskDemoralizingShout | SpellMaskBerserkerRage,
 		Kind:      core.SpellMod_AllowCastWhileChanneling,
 	})
@@ -217,19 +217,13 @@ func (war *Warrior) registerBladestorm() {
 			IsAOE: true,
 			Aura: core.Aura{
 				Label: "Bladestorm",
-				OnGain: func(aura *core.Aura, sim *core.Simulation) {
-					channelMod.Activate()
-				},
-				OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-					channelMod.Deactivate()
-				},
 			},
 			NumberOfTicks: 6,
 			TickLength:    time.Second * 1,
 			OnTick: func(sim *core.Simulation, target *core.Unit, dot *core.Dot) {
 				mhSpell.Cast(sim, target)
 
-				if war.OffHand() != nil && war.OffHand().WeaponType != proto.WeaponType_WeaponTypeUnknown {
+				if war.OffHand() != nil && (war.OffHand().WeaponType != proto.WeaponType_WeaponTypeUnknown && war.OffHand().WeaponType != proto.WeaponType_WeaponTypeShield) {
 					ohSpell.Cast(sim, target)
 				}
 			},

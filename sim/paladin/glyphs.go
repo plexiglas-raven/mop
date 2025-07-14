@@ -112,15 +112,17 @@ func (paladin *Paladin) registerGlyphOfAvengingWrath() {
 			})
 		},
 
-		OnExpire: func(aura *core.Aura, sim *core.Simulation) {
-			core.StartDelayedAction(sim, core.DelayedActionOptions{
-				DoAt: sim.CurrentTime + core.SpellBatchWindow,
-				OnAction: func(sim *core.Simulation) {
-					if healPA != nil {
-						healPA.Cancel(sim)
-					}
-				},
-			})
+		OnExpire: func(_ *core.Aura, sim *core.Simulation) {
+			pa := sim.GetConsumedPendingActionFromPool()
+			pa.NextActionAt = sim.CurrentTime + core.SpellBatchWindow
+
+			pa.OnAction = func(sim *core.Simulation) {
+				if healPA != nil {
+					healPA.Cancel(sim)
+				}
+			}
+
+			sim.AddPendingAction(pa)
 		},
 	})
 

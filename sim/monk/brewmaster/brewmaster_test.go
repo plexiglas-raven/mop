@@ -6,15 +6,18 @@ import (
 	"github.com/wowsims/mop/sim/common" // imported to get item effects included.
 	"github.com/wowsims/mop/sim/core"
 	"github.com/wowsims/mop/sim/core/proto"
+	"github.com/wowsims/mop/sim/encounters/msv"
 )
 
 func init() {
 	RegisterBrewmasterMonk()
 	common.RegisterAllEffects()
+	msv.Register()
 }
 
 func TestBrewmaster(t *testing.T) {
 	core.RunTestSuite(t, t.Name(), core.FullCharacterTestSuiteGenerator([]core.CharacterSuiteConfig{
+		core.GetTestBuildFromJSON(proto.Class_ClassMonk, "../../../ui/monk/brewmaster/builds", "garajal_default", ItemFilter, nil, nil),
 		{
 			Class:      proto.Class_ClassMonk,
 			Race:       proto.Race_RaceTroll,
