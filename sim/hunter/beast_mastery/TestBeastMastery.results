@@ -2362,48 +2362,6 @@ dps_results: {
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent0-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
- value: {
-  dps: 165702.28645
-  tps: 95447.20459
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent0-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
- value: {
-  dps: 135860.26598
-  tps: 65556.49252
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent0-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
- value: {
-  dps: 189289.69074
-  tps: 73196.52852
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent0-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
- value: {
-  dps: 121357.28862
-  tps: 75486.09041
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent0-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
- value: {
-  dps: 96965.64426
-  tps: 51582.6024
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent0-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
- value: {
-  dps: 110629.98484
-  tps: 51516.87799
- }
-}
-dps_results: {
  key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent2-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
  value: {
   dps: 173861.29064
@@ -2446,45 +2404,45 @@ dps_results: {
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent0-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent3-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
  value: {
-  dps: 168784.35476
-  tps: 98494.22432
+  dps: 167959.55199
+  tps: 94966.60496
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent0-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent3-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
  value: {
-  dps: 139880.19158
-  tps: 69876.62829
+  dps: 138302.76193
+  tps: 65261.7028
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent0-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent3-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
  value: {
-  dps: 200589.98561
-  tps: 86136.25148
+  dps: 191372.93296
+  tps: 72141.02363
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent0-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent3-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
  value: {
-  dps: 124053.86711
-  tps: 77943.49734
+  dps: 122523.63224
+  tps: 74610.08277
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent0-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent3-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
  value: {
-  dps: 99133.65646
-  tps: 54182.29693
+  dps: 99478.44984
+  tps: 51110.91591
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent0-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row5_Talent3-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
  value: {
-  dps: 116419.83675
-  tps: 58924.21825
+  dps: 113901.51663
+  tps: 50481.47106
  }
 }
 dps_results: {
@@ -2530,6 +2488,48 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent3-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
+ value: {
+  dps: 168784.35476
+  tps: 98494.22432
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent3-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
+ value: {
+  dps: 139880.19158
+  tps: 69876.62829
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent3-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
+ value: {
+  dps: 200589.98561
+  tps: 86136.25148
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent3-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
+ value: {
+  dps: 124053.86711
+  tps: 77943.49734
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent3-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
+ value: {
+  dps: 99133.65646
+  tps: 54182.29693
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Dwarf-p1-Row6_Talent3-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
+ value: {
+  dps: 116419.83675
+  tps: 58924.21825
+ }
+}
+dps_results: {
  key: "TestBeastMastery-Settings-Orc-p1-DefaultTalents-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
  value: {
   dps: 179458.24088
@@ -2569,48 +2569,6 @@ dps_results: {
  value: {
   dps: 125561.8097
   tps: 62634.31623
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent0-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
- value: {
-  dps: 169936.84472
-  tps: 96695.14302
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent0-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
- value: {
-  dps: 139544.69121
-  tps: 66254.76406
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent0-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
- value: {
-  dps: 197451.91975
-  tps: 74499.44739
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent0-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
- value: {
-  dps: 124488.13819
-  tps: 76610.70938
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent0-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
- value: {
-  dps: 99588.27984
-  tps: 52208.39127
- }
-}
-dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent0-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
- value: {
-  dps: 115586.16749
-  tps: 52594.3019
  }
 }
 dps_results: {
@@ -2656,45 +2614,45 @@ dps_results: {
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent0-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
+ key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent3-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
  value: {
-  dps: 173219.40951
-  tps: 99936.67198
+  dps: 172266.31635
+  tps: 96202.39183
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent0-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
+ key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent3-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
  value: {
-  dps: 143755.03741
-  tps: 70816.19095
+  dps: 142066.77749
+  tps: 65925.9279
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent0-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
+ key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent3-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
  value: {
-  dps: 208958.59726
-  tps: 87760.45433
+  dps: 199643.40884
+  tps: 73159.69569
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent0-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
+ key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent3-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
  value: {
-  dps: 127340.52332
-  tps: 79218.6253
+  dps: 125678.03195
+  tps: 75666.88489
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent0-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
+ key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent3-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
  value: {
-  dps: 101921.56925
-  tps: 54976.08001
+  dps: 102152.51492
+  tps: 51666.57116
  }
 }
 dps_results: {
- key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent0-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
+ key: "TestBeastMastery-Settings-Orc-p1-Row5_Talent3-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
  value: {
-  dps: 121511.86061
-  tps: 60163.643
+  dps: 119085.45875
+  tps: 51239.76766
  }
 }
 dps_results: {
@@ -2737,6 +2695,48 @@ dps_results: {
  value: {
   dps: 121987.86149
   tps: 61081.67844
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent3-Basic-bm-FullBuffs-5.1yards-LongMultiTarget"
+ value: {
+  dps: 173219.40951
+  tps: 99936.67198
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent3-Basic-bm-FullBuffs-5.1yards-LongSingleTarget"
+ value: {
+  dps: 143755.03741
+  tps: 70816.19095
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent3-Basic-bm-FullBuffs-5.1yards-ShortSingleTarget"
+ value: {
+  dps: 208958.59726
+  tps: 87760.45433
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent3-Basic-bm-NoBuffs-5.1yards-LongMultiTarget"
+ value: {
+  dps: 127340.52332
+  tps: 79218.6253
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent3-Basic-bm-NoBuffs-5.1yards-LongSingleTarget"
+ value: {
+  dps: 101921.56925
+  tps: 54976.08001
+ }
+}
+dps_results: {
+ key: "TestBeastMastery-Settings-Orc-p1-Row6_Talent3-Basic-bm-NoBuffs-5.1yards-ShortSingleTarget"
+ value: {
+  dps: 121511.86061
+  tps: 60163.643
  }
 }
 dps_results: {
