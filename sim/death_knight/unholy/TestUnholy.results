@@ -165,8 +165,8 @@ dps_results: {
 dps_results: {
  key: "TestUnholy-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 126204.23112
-  tps: 91276.43056
+  dps: 126204.1501
+  tps: 91276.34954
  }
 }
 dps_results: {

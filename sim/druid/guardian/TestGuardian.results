@@ -780,10 +780,10 @@ dps_results: {
 dps_results: {
  key: "TestGuardian-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 102036.14427
-  tps: 675935.75372
-  dtps: 30303.63811
-  hps: 15123.71644
+  dps: 101910.9708
+  tps: 675059.1611
+  dtps: 30253.60157
+  hps: 14981.37497
  }
 }
 dps_results: {

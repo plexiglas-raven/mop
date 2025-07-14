@@ -186,10 +186,10 @@ dps_results: {
 dps_results: {
  key: "TestBlood-AllItems-EnchantWeapon-River'sSong-4446"
  value: {
-  dps: 110246.43686
-  tps: 667562.87609
-  dtps: 97573.73918
-  hps: 81934.19598
+  dps: 110007.57571
+  tps: 666270.31018
+  dtps: 97629.79418
+  hps: 82002.45188
  }
 }
 dps_results: {
