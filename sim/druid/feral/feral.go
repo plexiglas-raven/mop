@@ -74,9 +74,11 @@ type FeralDruid struct {
 	PredatorySwiftnessAura  *core.Aura
 	SavageRoarBuff          *core.Dot
 	SavageRoarDurationTable [6]time.Duration
+	TigersFuryAura          *core.Aura
 
 	// Spell references
 	SavageRoar *druid.DruidSpell
+	Shred      *druid.DruidSpell
 
 	// Rotation FeralDruidRotation
 
@@ -108,6 +110,7 @@ func (cat *FeralDruid) Initialize() {
 	cat.Druid.Initialize()
 	cat.RegisterFeralCatSpells()
 	cat.registerSavageRoarSpell()
+	cat.registerShredSpell()
 	cat.ApplyPrimalFury()
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()
