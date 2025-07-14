@@ -79,6 +79,7 @@ type FeralDruid struct {
 	// Spell references
 	SavageRoar *druid.DruidSpell
 	Shred      *druid.DruidSpell
+	TigersFury *druid.DruidSpell
 
 	// Rotation FeralDruidRotation
 
@@ -111,6 +112,7 @@ func (cat *FeralDruid) Initialize() {
 	cat.RegisterFeralCatSpells()
 	cat.registerSavageRoarSpell()
 	cat.registerShredSpell()
+	cat.registerTigersFurySpell()
 	cat.ApplyPrimalFury()
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()
