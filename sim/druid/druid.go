@@ -18,9 +18,7 @@ type Druid struct {
 
 	Treants TreantAgents
 
-	RebirthUsed       bool
-	RebirthTiming     float64
-	BleedsActive      int
+	BleedsActive      map[*core.Unit]int32
 	AssumeBleedActive bool
 	CannotShredTarget bool
 
@@ -46,7 +44,6 @@ type Druid struct {
 	Prowl                 *DruidSpell
 	Rake                  *DruidSpell
 	Ravage                *DruidSpell
-	Rebirth               *DruidSpell
 	Rejuvenation          *DruidSpell
 	Rip                   *DruidSpell
 	Shred                 *DruidSpell
@@ -78,7 +75,6 @@ type Druid struct {
 	SurvivalInstinctsAura    *core.Aura
 
 	form         DruidForm
-	disabledMCDs []*core.MajorCooldown
 
 	// Guardian leather specialization is form-specific
 	GuardianLeatherSpecTracker *core.Aura
@@ -278,10 +274,11 @@ func (druid *Druid) RegisterFeralTankSpells() {
 }
 
 func (druid *Druid) Reset(_ *core.Simulation) {
-	druid.BleedsActive = 0
 	druid.form = druid.StartingForm
-	druid.disabledMCDs = []*core.MajorCooldown{}
-	druid.RebirthUsed = false
+
+	for target := range druid.BleedsActive {
+		druid.BleedsActive[target] = 0
+	}
 }
 
 func (druid *Druid) OnEncounterStart(sim *core.Simulation) {
@@ -295,6 +292,7 @@ func New(char *core.Character, form DruidForm, selfBuffs SelfBuffs, talents stri
 		StartingForm:      form,
 		form:              form,
 		ClassSpellScaling: core.GetClassSpellScalingCoefficient(proto.Class_ClassDruid),
+		BleedsActive:      make(map[*core.Unit]int32),
 	}
 
 	core.FillTalentsProto(druid.Talents.ProtoReflect(), talents)
