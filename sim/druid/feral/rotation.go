@@ -100,4 +100,24 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 			cat.FaerieFire.CastOrQueue(sim, aoeTarget)
 		}
 	}
+
+	// Off-GCD Maul check
+	if cat.BearFormAura.IsActive() && !cat.ClearcastingAura.IsActive() && cat.Maul.CanCast(sim, cat.CurrentTarget) {
+		cat.Maul.Cast(sim, cat.CurrentTarget)
+	}
+
+	// Handle movement before any rotation logic
+	if cat.Moving || (cat.Hardcast.Expires > sim.CurrentTime) {
+		return
+	}
+
+	if cat.DistanceFromTarget > core.MaxMeleeRange {
+		// TODO: Wild Charge or Displacer Beast usage here
+		if sim.Log != nil {
+			cat.Log(sim, "Out of melee range (%.6fy) and cannot charge or teleport, initiating manual run-in...", cat.DistanceFromTarget)
+		}
+
+		cat.MoveTo(core.MaxMeleeRange - 1, sim) // movement aura is discretized in 1 yard intervals, so need to overshoot to guarantee melee range
+		return
+	}
 }

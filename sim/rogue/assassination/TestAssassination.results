@@ -294,6 +294,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestAssassination-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 83680.23875
+  tps: 58846.00586
+ }
+}
+dps_results: {
  key: "TestAssassination-AllItems-PhaseFingers-4697"
  value: {
   dps: 83434.43105

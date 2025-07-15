@@ -1452,6 +1452,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestSurvival-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 154127.90096
+  tps: 127438.72898
+ }
+}
+dps_results: {
  key: "TestSurvival-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 142715.94921

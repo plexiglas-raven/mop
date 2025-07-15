@@ -1452,6 +1452,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBeastMastery-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 145559.18312
+  tps: 75081.11463
+ }
+}
+dps_results: {
  key: "TestBeastMastery-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 134486.65437

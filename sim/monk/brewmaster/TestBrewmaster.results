@@ -1903,6 +1903,15 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestBrewmaster-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 117648.64062
+  tps: 663414.63031
+  dtps: 20089.08149
+  hps: 26843.47097
+ }
+}
+dps_results: {
  key: "TestBrewmaster-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 113883.67092

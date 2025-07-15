@@ -1452,6 +1452,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestMarksmanship-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 156452.31786
+  tps: 129731.63827
+ }
+}
+dps_results: {
  key: "TestMarksmanship-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 146475.36549

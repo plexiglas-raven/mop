@@ -262,6 +262,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestCombat-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 80694.7482
+  tps: 56695.43069
+ }
+}
+dps_results: {
  key: "TestCombat-AllItems-PhaseFingers-4697"
  value: {
   dps: 79954.40603

@@ -248,6 +248,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestArcane-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 147440.80267
+  tps: 145236.00729
+ }
+}
+dps_results: {
  key: "TestArcane-AllItems-PhaseFingers-4697"
  value: {
   dps: 146872.95537

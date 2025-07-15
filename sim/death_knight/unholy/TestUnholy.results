@@ -296,6 +296,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestUnholy-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 136754.78078
+  tps: 97659.05153
+  hps: 1921.27281
+ }
+}
+dps_results: {
  key: "TestUnholy-AllItems-PhaseFingers-4697"
  value: {
   dps: 135862.74169

@@ -1687,6 +1687,14 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestWindwalker-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 158567.34657
+  tps: 148287.24631
+  hps: 7810.39865
+ }
+}
+dps_results: {
  key: "TestWindwalker-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 148554.91426

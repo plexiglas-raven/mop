@@ -262,6 +262,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestSubtlety-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 83581.27341
+  tps: 58937.20339
+ }
+}
+dps_results: {
  key: "TestSubtlety-AllItems-PhaseFingers-4697"
  value: {
   dps: 84042.81219

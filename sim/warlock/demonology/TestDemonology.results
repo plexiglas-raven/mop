@@ -1431,6 +1431,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestDemonology-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 87192.32752
+  tps: 55712.89406
+ }
+}
+dps_results: {
  key: "TestDemonology-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 81445.09972
