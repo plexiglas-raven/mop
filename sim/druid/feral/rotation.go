@@ -120,4 +120,9 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 		cat.MoveTo(core.MaxMeleeRange - 1, sim) // movement aura is discretized in 1 yard intervals, so need to overshoot to guarantee melee range
 		return
 	}
+
+	if !cat.GCD.IsReady(sim) {
+		cat.WaitUntil(sim, cat.NextGCDAt())
+		return
+	}
 }
