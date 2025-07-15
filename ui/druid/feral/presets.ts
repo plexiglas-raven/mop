@@ -29,10 +29,10 @@ import DefaultApl from './apls/default.apl.json';
 export const APL_ROTATION_DEFAULT = PresetUtils.makePresetAPLRotation('APL List View', DefaultApl);
 
 import { Stats } from '../../core/proto_utils/stats';
-import AoeApl from './apls/aoe.apl.json';
-export const APL_ROTATION_AOE = PresetUtils.makePresetAPLRotation('APL AoE', AoeApl);
-import TendonApl from './apls/tendon.apl.json';
-export const APL_ROTATION_TENDON = PresetUtils.makePresetAPLRotation('Tendon APL', TendonApl);
+//import AoeApl from './apls/aoe.apl.json';
+//export const APL_ROTATION_AOE = PresetUtils.makePresetAPLRotation('APL AoE', AoeApl);
+//import TendonApl from './apls/tendon.apl.json';
+//export const APL_ROTATION_TENDON = PresetUtils.makePresetAPLRotation('Tendon APL', TendonApl);
 
 // Preset options for EP weights
 export const BEARWEAVE_EP_PRESET = PresetUtils.makePresetEpWeights(
