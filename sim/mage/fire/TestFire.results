@@ -1431,6 +1431,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFire-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 129168.06497
+  tps: 125863.06689
+ }
+}
+dps_results: {
  key: "TestFire-AllItems-OathswornDefenderIdol-101303"
  value: {
   dps: 120300.43321

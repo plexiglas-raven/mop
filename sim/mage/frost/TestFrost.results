@@ -248,6 +248,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFrost-AllItems-NitroBoosts-4223"
+ value: {
+  dps: 146835.32886
+  tps: 101653.56303
+ }
+}
+dps_results: {
  key: "TestFrost-AllItems-PhaseFingers-4697"
  value: {
   dps: 146652.07312

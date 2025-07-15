@@ -41,11 +41,6 @@ func NewFeralDruid(character *core.Character, options *proto.Player) *FeralDruid
 
 	cat.AssumeBleedActive = feralOptions.Options.AssumeBleedActive
 	cat.CannotShredTarget = feralOptions.Options.CannotShredTarget
-	// TODO: Fix this to work with the new talent system.
-	// cat.maxRipTicks = cat.MaxRipTicks()
-	// cat.primalMadnessBonus = 10.0 * float64(cat.Talents.PrimalMadness)
-	cat.maxRipTicks = 0
-	cat.primalMadnessBonus = 0
 
 	cat.EnableEnergyBar(core.EnergyBarOptions{
 		MaxComboPoints: 5,
@@ -74,26 +69,14 @@ type FeralDruid struct {
 	PredatorySwiftnessAura  *core.Aura
 	SavageRoarBuff          *core.Dot
 	SavageRoarDurationTable [6]time.Duration
+	TigersFuryAura          *core.Aura
 
 	// Spell references
 	SavageRoar *druid.DruidSpell
+	Shred      *druid.DruidSpell
+	TigersFury *druid.DruidSpell
 
-	// Rotation FeralDruidRotation
-
-	readyToShift       bool
-	readyToGift        bool
-	waitingForTick     bool
-	maxRipTicks        int32
-	primalMadnessBonus float64
-	berserkUsed        bool
-	bleedAura          *core.Aura
 	tempSnapshotAura   *core.Aura
-	lastShift          time.Duration
-	cachedRipEndThresh time.Duration
-	nextActionAt       time.Duration
-	usingHardcodedAPL  bool
-	// pendingPool        *PoolingActions
-	// pendingPoolWeaves  *PoolingActions
 }
 
 func (cat *FeralDruid) GetDruid() *druid.Druid {
@@ -108,6 +91,8 @@ func (cat *FeralDruid) Initialize() {
 	cat.Druid.Initialize()
 	cat.RegisterFeralCatSpells()
 	cat.registerSavageRoarSpell()
+	cat.registerShredSpell()
+	cat.registerTigersFurySpell()
 	cat.ApplyPrimalFury()
 	cat.ApplyLeaderOfThePack()
 	cat.ApplyNurturingInstinct()
@@ -171,10 +156,6 @@ func (cat *FeralDruid) Reset(sim *core.Simulation) {
 	cat.Druid.Reset(sim)
 	cat.Druid.ClearForm(sim)
 	cat.CatFormAura.Activate(sim)
-	cat.readyToShift = false
-	cat.waitingForTick = false
-	cat.berserkUsed = false
-	cat.nextActionAt = -core.NeverExpires
 
 	// Reset snapshot power values until first cast
 	cat.Rip.CurrentSnapshotPower = 0
