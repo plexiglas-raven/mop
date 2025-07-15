@@ -206,6 +206,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestArcane-AllItems-Gladiator'sRegalia"
+ value: {
+  dps: 148284.89912
+  tps: 145759.56701
+ }
+}
+dps_results: {
  key: "TestArcane-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
   dps: 145089.18518
