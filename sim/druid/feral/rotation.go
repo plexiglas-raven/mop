@@ -92,4 +92,12 @@ func (rotation *FeralDruidRotation) Execute(sim *core.Simulation) {
 	if ccRefreshTime >= sim.CurrentTime - cat.ReactionTime {
 		rotation.WaitUntil(sim, max(cat.NextGCDAt(), ccRefreshTime + cat.ReactionTime))
 	}
+
+	// Keep up Sunder debuff if not provided externally. Do this here since
+	// FF can be cast while moving.
+	for _, aoeTarget := range sim.Encounter.ActiveTargetUnits {
+		if cat.ShouldFaerieFire(sim, aoeTarget) {
+			cat.FaerieFire.CastOrQueue(sim, aoeTarget)
+		}
+	}
 }
