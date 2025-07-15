@@ -21,7 +21,7 @@ func (holy *HolyPaladin) registerHolyShock() {
 		SpellSchool:    core.SpellSchoolHoly,
 		ProcMask:       core.ProcMaskSpellDamage,
 		ClassSpellMask: paladin.SpellMaskHolyShockDamage,
-		Flags:          core.SpellFlagAPL,
+		Flags:          core.SpellFlagNone,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -60,7 +60,7 @@ func (holy *HolyPaladin) registerHolyShock() {
 		SpellSchool:    core.SpellSchoolHoly,
 		ProcMask:       core.ProcMaskSpellHealing,
 		ClassSpellMask: paladin.SpellMaskHolyShockHeal,
-		Flags:          core.SpellFlagAPL,
+		Flags:          core.SpellFlagNone,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{

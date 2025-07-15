@@ -23,8 +23,10 @@ type Paladin struct {
 	AncientGuardian *AncientGuardianPet
 
 	AvengersShield *core.Spell
+	Denounce       *core.Spell
 	Exorcism       *core.Spell
 	HammerOfWrath  *core.Spell
+	HolyShock      *core.Spell
 	Judgment       *core.Spell
 
 	AncientPowerAura        *core.Aura
@@ -95,7 +97,6 @@ func (paladin *Paladin) registerSpells() {
 	paladin.registerAvengingWrath()
 	paladin.registerCrusaderStrike()
 	paladin.registerDevotionAura()
-	paladin.registerDivineFavor()
 	paladin.registerDivineProtection()
 	paladin.registerFlashOfLight()
 	paladin.registerForbearance()
