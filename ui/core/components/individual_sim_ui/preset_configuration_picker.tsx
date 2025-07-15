@@ -159,6 +159,7 @@ export class PresetConfigurationPicker extends Component {
 			if (epWeights) simUI.player.setEpWeights(eventID, epWeights.epWeights);
 			if (settings) {
 				if (settings.race) simUI.player.setRace(eventID, settings.race);
+				if (settings.consumables) simUI.player.setConsumes(eventID, settings.consumables);
 				if (settings.playerOptions?.profession1) simUI.player.setProfession1(eventID, settings.playerOptions.profession1);
 				if (settings.playerOptions?.profession2) simUI.player.setProfession2(eventID, settings.playerOptions.profession2);
 				if (settings.playerOptions?.distanceFromTarget) simUI.player.setDistanceFromTarget(eventID, settings.playerOptions.distanceFromTarget);
@@ -176,6 +177,7 @@ export class PresetConfigurationPicker extends Component {
 						...settings.specOptions,
 					});
 				}
+				if (settings.raidBuffs) simUI.sim.raid.setBuffs(eventID, settings.raidBuffs);
 				if (settings.buffs) simUI.player.setBuffs(eventID, settings.buffs);
 				if (settings.debuffs) simUI.sim.raid.setDebuffs(eventID, settings.debuffs);
 			}
@@ -222,7 +224,7 @@ export class PresetConfigurationPicker extends Component {
 		const hasItemSwap =
 			settings?.playerOptions?.itemSwap === undefined ||
 			ItemSwap.equals(this.simUI.player.itemSwapSettings?.toProto(), settings?.playerOptions?.itemSwap);
-		const hasSpecOptions = settings?.specOptions ? this.containsAllFields(this.simUI.player.getSpecOptions(), settings.specOptions) : true;
+		const hasSpecOptions = settings?.specOptions ? JSON.stringify(this.simUI.player.getSpecOptions()) == JSON.stringify(settings.specOptions) : true;
 		const hasConsumables = settings?.consumables ? ConsumesSpec.equals(this.simUI.player.getConsumes(), settings.consumables) : true;
 		const hasRaidBuffs = settings?.raidBuffs ? RaidBuffs.equals(this.simUI.sim.raid.getBuffs(), settings.raidBuffs) : true;
 		const hasBuffs = settings?.buffs ? IndividualBuffs.equals(this.simUI.player.getBuffs(), settings.buffs) : true;
@@ -247,9 +249,5 @@ export class PresetConfigurationPicker extends Component {
 			hasBuffs &&
 			hasDebuffs
 		);
-	}
-
-	private containsAllFields<T extends Spec>(full: SpecOptions<T>, partial: Partial<SpecOptions<T>>): boolean {
-		return Object.keys(partial).every(key => key in full && full[key as keyof SpecOptions<T>] === partial[key as keyof SpecOptions<T>]);
 	}
 }

@@ -718,7 +718,7 @@ func RegisterIgniteEffect(unit *core.Unit, config IgniteConfig) *core.Spell {
 				}
 			}
 
-			scheduledRefresh = core.StartDelayedAction(sim, core.DelayedActionOptions{
+			scheduledRefresh = core.NewDelayedAction(core.DelayedActionOptions{
 				DoAt:     applyDotAt,
 				Priority: core.ActionPriorityDOT,
 
@@ -726,6 +726,8 @@ func RegisterIgniteEffect(unit *core.Unit, config IgniteConfig) *core.Spell {
 					refreshIgnite(sim, target, damagePerTick)
 				},
 			})
+
+			sim.AddPendingAction(scheduledRefresh)
 		} else {
 			refreshIgnite(sim, target, damagePerTick)
 		}

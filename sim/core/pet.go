@@ -122,6 +122,10 @@ func NewPet(config PetConfig) Pet {
 	pet.AddStats(config.BaseStats)
 	pet.addUniversalStatDependencies()
 	pet.PseudoStats.InFrontOfTarget = config.Owner.PseudoStats.InFrontOfTarget
+
+	// Pre-allocate timeout action since it cannot be pooled.
+	pet.timeoutAction = &PendingAction{}
+
 	return pet
 }
 
@@ -290,7 +294,11 @@ func (pet *Pet) EnableWithTimeout(sim *Simulation, petAgent PetAgent, petDuratio
 }
 
 func (pet *Pet) SetTimeoutAction(sim *Simulation, duration time.Duration) {
-	pet.timeoutAction = sim.GetConsumedPendingActionFromPool()
+	if !pet.timeoutAction.consumed {
+		pet.timeoutAction.Cancel(sim)
+	}
+
+	pet.timeoutAction.cancelled = false
 	pet.timeoutAction.NextActionAt = sim.CurrentTime + duration
 	pet.timeoutAction.OnAction = pet.Disable
 	sim.AddPendingAction(pet.timeoutAction)
@@ -393,7 +401,7 @@ func (pet *Pet) Disable(sim *Simulation) {
 	// If a pet is immediately re-summoned it might try to use GCD, so we need to clear it.
 	pet.Hardcast = Hardcast{}
 
-	if (pet.timeoutAction != nil) && !pet.timeoutAction.consumed {
+	if !pet.timeoutAction.consumed {
 		pet.timeoutAction.Cancel(sim)
 	}
 
