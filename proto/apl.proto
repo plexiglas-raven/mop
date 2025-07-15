@@ -348,11 +348,11 @@ message APLActionCatOptimalRotationAction {
     bool snek_weave = 3;
     bool allow_aoe_berserk = 4;
     bool manual_params = 5;
-    float min_roar_offset = 6;
-    int32 rip_leeway = 7;
+    double min_roar_offset = 6;
+    double rip_leeway = 7;
     bool use_bite = 8;
-    float bite_time = 9;
-    float berserk_bite_time = 10;
+    double bite_time = 9;
+    double berserk_bite_time = 10;
 }
 
 message APLActionGuardianHotwDpsRotation {
