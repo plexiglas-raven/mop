@@ -787,6 +787,13 @@ dps_results: {
  }
 }
 dps_results: {
+ key: "TestFire-AllItems-Gladiator'sRegalia"
+ value: {
+  dps: 131648.90527
+  tps: 128393.48212
+ }
+}
+dps_results: {
  key: "TestFire-AllItems-Gong-Lu,StrengthofXuen-102249"
  value: {
   dps: 126820.76579
