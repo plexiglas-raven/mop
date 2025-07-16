@@ -15,7 +15,7 @@ import P1Gear from './gear_sets/p1.gear.json';
 // Eventually we will import these values for the raid sim too, so its good to
 // keep them in a separate file.
 
-export const P1_GEAR_PRESET = PresetUtils.makePresetGear('P1 Preset', P1Gear);
+export const P1_GEAR_PRESET = PresetUtils.makePresetGear('P1', P1Gear);
 export const APL_PRESET = PresetUtils.makePresetAPLRotation('Default', DefaultApl);
 
 // Preset options for EP weights
