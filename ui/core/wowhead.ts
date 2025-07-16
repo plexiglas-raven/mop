@@ -1,6 +1,5 @@
 import { getLang } from '../i18n/locale_service';
 import { CHARACTER_LEVEL } from './constants/mechanics';
-import { Race, Spec } from './proto/common';
 import { Database } from './proto_utils/database';
 
 export type WowheadTooltipItemParams = {
