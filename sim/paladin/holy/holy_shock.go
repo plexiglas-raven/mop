@@ -43,7 +43,8 @@ func (holy *HolyPaladin) registerHolyShock() {
 			actionID := core.ActionID{SpellID: 20473}
 			holy.CanTriggerHolyAvengerHpGain(actionID)
 
-			baseHealing := holy.CalcScalingSpellDmg(2.73) // Same coefficient for healing
+			// Use proper spell scaling: base scaling + spell power coefficient
+			baseHealing := holy.CalcScalingSpellDmg(2.73) + 1.36*spell.SpellPower()
 			result := spell.CalcHealing(sim, target, baseHealing, spell.OutcomeHealingCrit)
 
 			if result.Landed() {
@@ -86,8 +87,8 @@ func (holy *HolyPaladin) registerHolyShock() {
 
 			// For APL usage, default to damage version
 			if target == nil || target.IsOpponent(&holy.Unit) {
-				// Cast damage version directly
-				baseDamage := holy.CalcScalingSpellDmg(2.73)
+				// Use proper spell scaling: base scaling + spell power coefficient
+				baseDamage := holy.CalcScalingSpellDmg(2.73) + 1.36*spell.SpellPower()
 				result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
 
 				if result.Landed() {
