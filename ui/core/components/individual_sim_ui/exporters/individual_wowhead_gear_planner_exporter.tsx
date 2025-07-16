@@ -183,7 +183,7 @@ export class IndividualWowheadGearPlannerExporter<SpecType extends Spec> extends
 
 		const data: WowheadGearPlannerData = {
 			level: CHARACTER_LEVEL,
-			specIndex: getWowheadSpecIndex(player.getSpec()),
+			specIndex: player.getPlayerSpec().specIndex,
 			talents: player.getTalentsString(),
 			glyphs: [
 				addGlyph(glyphs.major1),
