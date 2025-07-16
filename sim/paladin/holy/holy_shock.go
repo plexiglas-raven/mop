@@ -15,45 +15,6 @@ func (holy *HolyPaladin) registerHolyShock() {
 	// - Spell power coefficient: 1.36 (from wowhead)
 	// - Can damage enemies or heal allies
 
-	// Create damage version
-	holyShockDamage := holy.RegisterSpell(core.SpellConfig{
-		ActionID:       core.ActionID{SpellID: 20473},
-		SpellSchool:    core.SpellSchoolHoly,
-		ProcMask:       core.ProcMaskSpellDamage,
-		ClassSpellMask: paladin.SpellMaskHolyShockDamage,
-		Flags:          core.SpellFlagNone,
-
-		Cast: core.CastConfig{
-			DefaultCast: core.Cast{
-				GCD: core.GCDDefault,
-			},
-			IgnoreHaste: true,
-			CD: core.Cooldown{
-				Timer:    holy.NewTimer(),
-				Duration: time.Second * 6,
-			},
-		},
-
-		BonusCritPercent: 25.0,
-		DamageMultiplier: 1,
-		CritMultiplier:   holy.DefaultCritMultiplier(),
-		ThreatMultiplier: 1,
-
-		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			actionID := core.ActionID{SpellID: 20473}
-			holy.CanTriggerHolyAvengerHpGain(actionID)
-
-			baseDamage := holy.CalcScalingSpellDmg(2.73) // 2.73 spell power coefficient for MOP 5.5
-			result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
-
-			if result.Landed() {
-				holy.HolyPower.Gain(sim, 1, actionID)
-			}
-
-			spell.DealDamage(sim, result)
-		},
-	})
-
 	// Create healing version
 	holyShockHeal := holy.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 20473},
@@ -97,9 +58,11 @@ func (holy *HolyPaladin) registerHolyShock() {
 	holy.HolyShock = holy.RegisterSpell(core.SpellConfig{
 		ActionID:       core.ActionID{SpellID: 20473},
 		SpellSchool:    core.SpellSchoolHoly,
-		ProcMask:       core.ProcMaskSpellHealing | core.ProcMaskSpellDamage,
+		ProcMask:       core.ProcMaskSpellDamage, // Default to damage for APL usage
 		ClassSpellMask: paladin.SpellMaskHolyShock,
 		Flags:          core.SpellFlagAPL,
+
+		MaxRange: 40,
 
 		Cast: core.CastConfig{
 			DefaultCast: core.Cast{
@@ -112,10 +75,26 @@ func (holy *HolyPaladin) registerHolyShock() {
 			},
 		},
 
+		BonusCritPercent: 25.0,
+		DamageMultiplier: 1,
+		CritMultiplier:   holy.DefaultCritMultiplier(),
+		ThreatMultiplier: 1,
+
 		ApplyEffects: func(sim *core.Simulation, target *core.Unit, spell *core.Spell) {
-			if target.IsOpponent(&holy.Unit) {
-				// Cast damage version
-				holyShockDamage.Cast(sim, target)
+			actionID := core.ActionID{SpellID: 20473}
+			holy.CanTriggerHolyAvengerHpGain(actionID)
+
+			// For APL usage, default to damage version
+			if target == nil || target.IsOpponent(&holy.Unit) {
+				// Cast damage version directly
+				baseDamage := holy.CalcScalingSpellDmg(2.73)
+				result := spell.CalcDamage(sim, target, baseDamage, spell.OutcomeMagicHitAndCrit)
+
+				if result.Landed() {
+					holy.HolyPower.Gain(sim, 1, actionID)
+				}
+
+				spell.DealDamage(sim, result)
 			} else {
 				// Cast healing version
 				holyShockHeal.Cast(sim, target)
